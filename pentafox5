@@ -1,0 +1,107 @@
+1, Create a method/funcon to check whether the given 2 strings are anagram to one
+another or not. Return true if they are anagram.def isanagram(s1,s2):
+
+    n1 = len(s1)
+    n2 = len(s2)
+    if n1!=n2:
+        return False
+    s1 = sorted(s1)    
+    s2 = sorted(s2)
+    if s1==s2:
+        return True
+    return False
+    
+s1 = input()
+s2 = input()
+if(isanagram(s1,s2)):
+    print("Anagram")
+else:
+    print("Not Anagram")
+
+
+2,Return the sum of the prime numbers between given range (including given numbers).
+Eg., Input: 3 & 60. Output should print the sum of all the primes lying between 3 & 60
+
+def isprime(n):
+    if n==1:
+        return False
+    for i in range(2,n):
+        if(n%i==0):
+            return False
+    return True 
+
+
+n1 = int(input())
+n2 = int(input())
+s = 0
+for i in range(n1,n2+1):
+    if isprime(i):
+        s = s + i
+print(s)        
+
+3,Return the total number of days from the date given to ll now.
+Eg., Input: 24-01-1995 & Output should return the total days
+
+
+from datetime import date
+d1 = input().split('-')
+for i in range(3):
+    d1[i] = int(d1[i])
+date1 = date(d1[2],d1[1],d1[0])    
+date2 = date.today()
+diff = date2 - date1    
+print(diff.days)
+
+4, Create a simple encrypon program.
+- Eg., Input: Hi awesome! Output: H#9_a#23#5#19#15#13#5!
+- Replace each character with the correct alphabecal order number except the first
+character of each word. Eg., Hi -> H#9 (add # before every number)
+
+word = input().split()
+last_count = 0
+exceptional_parameters = ['!','@','$','%','^','&','*']
+for i in word:
+    li = list(i)
+    print(li[0],end="")
+    for j in range(1,len(li)):
+        if li[j] in exceptional_parameters:
+            print(li[j],end="")
+            continue
+        li[j] = li[j].upper()
+        n = ord(li[j])
+        print('#',n-64,sep='',end="")
+    last_count+=1
+    if last_count!=len(word):       
+        print('_',end="")
+
+5,○ Convert array to object based on data type.
+- Eg., Input: ["test", "name", 45, "anything", true, 78]
+- Eg., Output:
+{ "strings": ["test", "name", "anything"], "numbers": [45, 78], "booleans": [true] }
+
+def isinteger(n):
+    if n.isdigit():
+        return True
+    return False
+
+def isboolean(n):
+    if n=='true' or n=='false':
+        return True
+    return False
+
+dict = {}
+int_list = []
+str_list = []
+boolean_list = []
+input_list = input().split()
+for i in input_list:
+    if (isinteger(i)):
+        int_list.append(int(i))
+    elif (isboolean(i)):
+        boolean_list.append(i)
+    else:
+        str_list.append(i)                    
+dict["strings"] = str_list
+dict["numbers"] = int_list
+dict["booleans"] = boolean_list
+print(dict)
