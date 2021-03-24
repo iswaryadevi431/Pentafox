@@ -1,0 +1,148 @@
+#1
+A bicyclist cycles around a circular park with a pathway connecting two opposite end points of
+the path of length 7kms. Develop a logic that computes the total distance covered by the cyclist
+for a given set of rounds cycled.
+Input : Enter No. of Rounds : 10
+Output : ‘x’ Kms travelled.
+
+
+print("Enter No. of Rounds:")
+rounds = int(input())
+radius = 7/2
+circumference = radius * 2 * (3.14)
+print(str(rounds*circumference) + "Kms travelled")
+
+
+
+
+
+
+
+#2
+A fixed set of positive integers is dictated by the mathematics professor during a puzzle contest.
+The professor asks the students to find a pair of numbers that result in a given sum. Code a
+logic that can automate this puzzle. Use the below input for your exercise.
+Case – 1
+Input : arr = [1, 2, 3, 4, 6] & Sum = 8
+Output : 2,6
+Case – 2
+Input : arr = [1, 2, 3, 4, 9] & Sum = 8
+Ouput: No Pairs found
+
+
+arr = list(map(int ,input().split()))
+s = int(input())
+flag = 0
+for i in arr:
+    res = s - i
+    if res in arr and res!=i:
+        print(i , res)
+        flag = 1
+        break
+if flag==0:    
+    print("No Pairs found")    
+
+
+#3Alice is a cryptanalyst who is in charge of transmitting messages to bob without any intruder
+getting hands on it. Alice thinks of transmitting the message by reversing it with a random
+character appended as prefix to the encoded message.
+Input : Pentafox
+Ouput: Oxofatnep
+
+
+import random
+word = list(input())
+word = word[::-1]
+Random_to_chose = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+random_letter = random.choice(Random_to_chose)
+word.insert(0,random_letter)
+for i in word:
+    print(i,end="")
+
+
+
+#4As a computer engineer, you are requested to reduce the storage space needed to store the
+textual content in the computer. Write a logic that can compress the content as given in the
+below example.
+Input : All is well.
+Output : Al2 is wel2 (Character followed by its number of occurrence)
+
+
+
+word = list(input())
+i = 0
+while(i<len(word)):
+    count = 1
+    temp = word[i]
+    while((i+1)<len(word) and word[i+1]==temp):
+        count+=1
+        del word[i]
+    if count>1:
+        word.insert(i+1,str(count))
+    i+=count 
+listToStr = ''.join([str(s) for s in word])   
+print(listToStr)   
+
+
+
+
+
+
+#5 In a puzzle contest, the chairman of your English club posts a problem to compare a given pair
+of words and eliminate all common characters in them. To speed up the process of judging, the
+computer club head was requested to prepare computer logic. Please code a solution to the
+above problem applying your own skillset.
+Input : Word-1: Rajesh Word-2: Ganesh
+Output : RjGn
+
+
+first_name = list(input())
+second_name = list(input())
+for i in first_name:
+    if i not in second_name:
+        print(i,end="")
+for i in second_name:
+    if i not in first_name:
+        print(i,end="")
+
+#6A school camp is organized by a school to support the process of preparing their students for
+an examination. They are in need of a study timetable that has following assumptions:
+Assumptions:
+1. Total Days of Camp – 5 Days
+2. Total Hours a day – 5 Days
+3. Total Subjects – 5 Subjects
+Note: The timetable should not follow the same order and should be in random everyday.
+Prepare code logic to help the School.
+
+
+import random        
+tot_days = 5
+tot_hrs = 5
+subjects = {1:"sub1",2:"sub2",3:"sub3",4:"sub4",5:"sub5"}
+random_generator = [1,2,3,4,5]
+for i in range(1,tot_days+1):
+    li = [] 
+    print("DAY",i,end="   ")
+    while(len(li)!=5):
+        number = random.choice(random_generator)
+        if number not in li:
+            li.append(number)       
+    for i in range(0,len(li)):
+        number = li[i]
+        print(subjects[number],end=" ")
+    print()
+        
+
+#7The alphabetical value is represented from 1-26 for characters A-Z respectively. Using this
+principle generate a crypto decoder that can generate the message for transmitted sequence of
+alphabetical values.
+Input : 1,2,3,4,26
+Output : ABCDZ
+
+
+
+numbers = list(map(int ,input().split()))
+for i in numbers:
+    print(chr(i+64),end="")
+
+  
